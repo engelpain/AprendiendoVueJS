@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sandbox</title>
+
+  <!-- VueJS v2.5.21 - enlace local -->
+  <script src="../js/vue.js"></script>
+
+</head>
+<body>
+
+  <!-- 1. Se agrega el selector donde se cargarán los elementos de la lista -->
+  <div id="listaDinamica">
+    <ul>
+      <!-- 2. Agregar la directiva de iteración v-for, que imprimirá y los
+      valores de los elementos que se le pase a la instancia del objeto Vue,
+      que este caso de llama appListarElementos -->
+      <li v-for="elemento in listaDeElementos">
+        <strong>{{ elemento.nombreElemento }}</strong>: {{ elemento.descripcionElemento }} 
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    var appListarElementos = new Vue({
+      el: '#listaDinamica',
+      data: {
+        listaDeElementos: [
+          { nombreElemento: 'Primero', descripcionElemento: 'Primer elemento de la lista'},
+          { nombreElemento: 'Segundo', descripcionElemento: 'Segundo elemento de la lista' },
+          { nombreElemento: 'Último', descripcionElemento: 'Último elemento de la lista' },
+        ]
+      }
+    });
+  </script>
+
+</body>
+</html>
