@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sandbox</title>
+
+  <!-- VueJS v2.5.21 - enlace local -->
+  <script src="../js/vue.js"></script>
+
+</head>
+<body>
+
+
+
+  <div id="listaDinamica">
+    <ul>
+      <!-- Otra forma de mostrar los datos del array es con la directiva v-text -->
+      <li v-for="elemento in listaDeElementos" v-text="elemento"> </li>
+    </ul>
+
+    <!-- 1. Se agrega un input apuntando al modelo nombre, y que al pulsar enter
+    llame al método agregaNombre -->
+    <input type="text" id="nombreElemento" v-model="nombre" v-on:keyup.enter="agregarNombre">
+
+  <script>
+    var appListarElementos = new Vue({
+      el: '#listaDinamica',
+      data: {
+        listaDeElementos: ['Primero', 'Segundo', 'Último']
+      },
+      nombre: '',
+      methods: {
+        agregarNombre: function() {
+          this.listaDeElementos.push(this.nombre);
+          this.nombre = '';
+        }
+      },
+    });
+</script>
+
+</body>
+</html>
