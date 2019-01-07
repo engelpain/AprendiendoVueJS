@@ -10,12 +10,9 @@
 </head>
 <body>
 
-  <!-- 1. Se agrega el selector donde se cargarán los elementos de la lista -->
   <div id="listaDinamica">
     <ul>
-      <!-- 2. Agregar la directiva de iteración v-for, que imprimirá y los
-      valores de los elementos que se le pase a la instancia del objeto Vue,
-      que este caso de llama appListarElementos -->
+      <!-- Directiva v-for para leer los elementos que trae el array listaDeElementos -->
       <li v-for="elemento in listaDeElementos">
         <strong>{{ elemento.nombreElemento }}</strong>: {{ elemento.descripcionElemento }} 
       </li>
