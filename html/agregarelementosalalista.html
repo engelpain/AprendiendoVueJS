@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Sandbox</title>
+  <title>Agregar elementos a la lista</title>
 
   <!-- VueJS v2.5.21 - enlace local -->
   <script src="../js/vue.js"></script>
@@ -18,15 +18,15 @@
       <li v-for="elemento in listaDeElementos" v-text="elemento"> </li>
     </ul>
 
-    <!-- 1. Se agrega un input apuntando al modelo nombre, y que al pulsar enter
-    llame al método agregaNombre -->
+    <!-- input apuntando al modelo nombre, y que al pulsar enter llama al método agregaNombre -->
     <input type="text" id="nombreElemento" v-model="nombre" v-on:keyup.enter="agregarNombre">
+  </div>
 
   <script>
     var appListarElementos = new Vue({
       el: '#listaDinamica',
       data: {
-        listaDeElementos: ['Primero', 'Segundo', 'Último']
+        listaDeElementos: ['Lorem ipsum', 'Hola mundo!', 'Chinatown']
       },
       nombre: '',
       methods: {
@@ -36,7 +36,7 @@
         }
       },
     });
-</script>
+  </script>
 
 </body>
 </html>

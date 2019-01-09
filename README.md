@@ -20,7 +20,8 @@ Para enlazar el framework a un proyecto:
 
 ### Mi primera aplicación con Vue
 1. [Escribir texto en el DOM](#escribir-texto-en-el-dom)
-2. [Creando una lista dinámica](#creando-una-lista-dinamica)
+2. [Crear una lista dinámica](#creando-una-lista-dinámica)
+3. [Agregar elementos a la lista](#agregar-elementos-a-la-lista)
 
 
 ### Escribir texto en el DOM
@@ -30,7 +31,6 @@ El selector en este ejemplo, tiene el *id* __selectorDOM__, y será utilizado po
 <main id="selectorDOM">
 </main>
 ```
-
 
 2. Se crea la aplicación con VueJS:
 ```javascript
@@ -48,7 +48,6 @@ El selector en este ejemplo, tiene el *id* __selectorDOM__, y será utilizado po
   })
 ```
 
-
 3. En el paso dos se declaró la *data* que será enviada al DOM por el componente. Ahora hay que añadirla al selector:
 ```html
 <main id="selectorDOM">
@@ -56,8 +55,33 @@ El selector en este ejemplo, tiene el *id* __selectorDOM__, y será utilizado po
 </main>
 ```
 
+[Ejemplo de Hola mundo]("./html/holamundo.html")
 
-### Creando una lista dinámica
+
+
+### Crear una lista dinámica con un array de datos
+1. Se crea un nuevo componente, llamado *appListarElementos* apuntando al selector del DOM, en la *data* del componente se agregará un array con una lista de elementos, que serán enviados al DOM usando Vue.JS:
+```javascript
+var appListarElementos = new Vue({
+  el: '#listaDinamica',
+  data: {
+    listaDeElementos: [ "Primero", "Segundo", "Último" ]
+  }
+});
+```
+
+2. Se agrega la directiva de iteración **v-for** al selector que será impreso por la iteración de los elementos la lista, donde elemento:
+```html
+<div id="listaDinamica">
+  <ul>
+    <li v-for="elemento in listaDeElementos">
+      {{ elemento }} 
+    </li>
+  </ul>
+</div>
+```
+
+### Crear una lista dinámica con un array de objetos
 1. Se crea un nuevo componente, llamado *appListarElementos* apuntando al selector del DOM, en la *data* del componente se agregará un array con una lista de elementos, que serán enviados al DOM usando Vue.JS:
 ```javascript
 var appListarElementos = new Vue({
@@ -73,7 +97,6 @@ var appListarElementos = new Vue({
 ```
 
 2. Se agrega la directiva de iteración **v-for** al selector que será impreso por la iteración de los elementos la lista, donde elemento:
-
 ```html
 <div id="listaDinamica">
   <ul>
@@ -83,3 +106,93 @@ var appListarElementos = new Vue({
   </ul>
 </div>
 ```
+[Ejemplo de Hola mundo]("./html/listasdinamicas.html")
+
+
+
+### Agregar elementos a la lista
+1. Tomando el ejemplo anterior de [crear una lista dinámica con un array de datos](#crear-una-lista-dinámica-con-un-array-de-datos):
+```javascript
+var appListarElementos = new Vue({
+  el: '#listaDinamica',
+  data: {
+    listaDeElementos: [ "Primero", "Segundo", "Último" ]
+  }
+});
+```
+
+2. Hay que crear una variable dentro del componente, en este caso será denominada **nombre**, e irá vacía para poder guardar los datos que se le enviarán posteriormente:
+```javascript
+var appListarElementos = new Vue({
+  el: '#listaDinamica',
+  data: {
+    listaDeElementos: ['Primero', 'Segundo', 'Último']
+  },
+  nombre: '',
+});
+```
+
+3. Hay que crear el método **agregarNombre** que incluirá el **nombre** en el array:
+```javascript
+var appListarElementos = new Vue({
+  el: '#listaDinamica',
+  data: {
+    listaDeElementos: ['Primero', 'Segundo', 'Último']
+  },
+  nombre: '',
+  methods: {
+    agregarNombre: function() {
+      this.listaDeElementos.push(this.nombre);
+      this.nombre = '';
+    }
+  },
+});
+```
+
+4. En el ejemplo anterior de [crear una lista dinámica con un array de datos](#crear-una-lista-dinámica-con-un-array-de-datos), se imprimían los datos usando {{ elemento }}, en este caso se usará la directiva **v-text** que realiza la misma función:
+```html
+<div id="listaDinamica">
+  <ul>
+    <li v-for="elemento in listaDeElementos" v-text="elemento"> </li>
+  </ul>
+</div>
+```
+
+5. Agregar un input apuntando al modelo **nombre** y que al pulsar enter llame al método **agregaNombre**, que agregará el texto al array y luego pondrá el input en blanco de nuevo:
+```html
+<div id="listaDinamica">
+
+  <ul>
+    <li v-for="elemento in listaDeElementos" v-text="elemento"> </li>
+  </ul>
+
+  <input type="text" id="nombreElemento" v-model="nombre" v-on:keyup.enter="agregarNombre">
+
+</div>
+```
+[Ejemplo de Hola mundo]("./html/agregarelementosalalista.html")
+
+
+
+### Enlazar datos (Data Binding)
+1. Crear la instancia de Vue apuntando a un elemento, en este caso apunta al elemento con el id **main**, dentro de data crear una variable que contendrá la información que se le envíe. 
+```javascript
+new Vue({
+  el: '#main',
+  data: {
+    info: ''
+  }
+})
+```
+
+
+```html 
+<div id="main">
+  <input type="text" v-model="info">
+  <p v-bind:title="info">Lo que manda el input: {{ info }}</p>
+</div>
+``` 
+
+  <script>
+
+  </script>

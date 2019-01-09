@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Binding</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/vue.js"></script>
+  <script src="../js/vue-resource.min.js"></script>
+  <style>
+    img.rounded-circle:hover {
+      transform: scale(1.5);
+      transition-duration: .5s;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="main" class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="text-center">Lista Vue.js - AJAX</h2>
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Location</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Age</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Picture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="usuario in listaUsuarios">
+              <td v-text="usuario.name.first" class="text-capitalize"></td>
+              <td v-text="usuario.name.last" class="text-capitalize"></td>
+              <td class="text-capitalize">{{usuario.location.city}}, {{usuario.location.state}}</td>
+              <td v-text="usuario.gender" class="text-capitalize"></td>
+              <td v-text="usuario.dob.age" class="text-capitalize"></td>
+              <td v-text="usuario.phone" class="text-capitalize"></td>
+              <td> <img v-bind:src="usuario.picture.thumbnail" v-bind:alt="usuario.picture.thumbnail" class="rounded-circle" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <pre> {{ $data | json }} </pre>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    //https://randomuser.me/documentation#results
+    var urlUsuarios = 'https://randomuser.me/api/?results=5';
+    new Vue({
+      el: '#main',
+      created: function(){
+        this.consultarUsuarios();
+      },
+      data: {
+        listaUsuarios: []
+      },
+      methods: {
+        consultarUsuarios: function() {
+          this.$http.get(urlUsuarios).then(function(response){
+            this.listaUsuarios = response.data.results;
+          });
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

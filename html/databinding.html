@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Binding</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+
+  <div id="main">
+    <input type="text" v-model="info">
+    <p v-bind:title="info">Lo que manda el input: {{ info }}</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#main',
+      data: {
+        info: ''
+      }
+    })
+  </script>
+
+</body>
+</html>
