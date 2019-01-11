@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Modelo de datos</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+
+  <main id="elementoReceptor">
+    <input type="text" v-model="informacion">
+    <p>Lo que manda el input: {{ informacion }}</p>
+  </main>
+
+  <script>
+    var enviarDatos = new Vue({
+      el: '#elementoReceptor',
+      data: {
+        informacion: ''
+      }
+    });
+  </script>
+
+</body>
+</html>

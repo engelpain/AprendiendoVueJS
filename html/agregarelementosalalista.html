@@ -10,8 +10,6 @@
 </head>
 <body>
 
-
-
   <div id="listaDinamica">
     <ul>
       <!-- Otra forma de mostrar los datos del array es con la directiva v-text -->
@@ -26,9 +24,9 @@
     var appListarElementos = new Vue({
       el: '#listaDinamica',
       data: {
-        listaDeElementos: ['Lorem ipsum', 'Hola mundo!', 'Chinatown']
+        listaDeElementos: ['Lorem ipsum', 'Hola mundo!', 'Wakanda forever!'],
+        nombre: '',
       },
-      nombre: '',
       methods: {
         agregarNombre: function() {
           this.listaDeElementos.push(this.nombre);

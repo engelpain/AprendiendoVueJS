@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mostrar elementos condicionalmente</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+
+  <main id="mostrarElemento">
+    <!-- Input que apunta al modelo comprobarTexto, y lo llena en tiempo real -->
+    <input type="text" v-model="comprobarTexto"/>
+
+    <!-- La directiva v-show ocultará el elemento hasta que comprobar texto devuelva un valor -->
+    <input type="submit" v-show="comprobarTexto">
+  </main>
+
+  <script>
+    var enviarDatos = new Vue({
+      el: '#mostrarElemento',
+      data: {
+        comprobarTexto: ''
+      }
+    });
+  </script>
+
+</body>
+</html>

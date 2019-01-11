@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajax</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <script src="../js/vue.js"></script>
+  <script src="../js/axios.min.js"></script>
+</head>
+<body>
+
+  <div id="main" class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center text-light bg-success my-3 py-3">Lista Vue.js</h1>
+        <h2>Tabla filtrada en HTML</h2>
+
+        <div class="table-responsive">
+          <table class="table table-striped table-hovered">
+            <thead>
+              <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Location</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Age</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Picture</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="usuario in listaUsuarios">
+                <td v-text="usuario.name.first" class="text-capitalize"></td>
+                <td v-text="usuario.name.last" class="text-capitalize"></td>
+                <td class="text-capitalize">{{usuario.location.city}}, {{usuario.location.state}}</td>
+                <td v-text="usuario.gender" class="text-capitalize"></td>
+                <td v-text="usuario.dob.age" class="text-capitalize"></td>
+                <td v-text="usuario.phone" class="text-capitalize"></td>
+                <td> <img v-bind:src="usuario.picture.thumbnail" v-bind:alt="usuario.picture.thumbnail" class="rounded-circle" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h2>Json</h2>
+        <div class="jumbotron">
+          <pre> {{ $data }} </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    //https://randomuser.me/documentation#results
+    var urlUsuarios = 'https://randomuser.me/api/?results=5';
+    var ajaxConVue = new Vue({
+      el: '#main',
+      data: {
+        listaUsuarios: []
+      },
+      created: function(){
+        this.consultarUsuarios();
+      },
+      methods: {
+        consultarUsuarios: function() {
+          axios.get(urlUsuarios).then(response => {
+            this.listaUsuarios = response.data.results
+          });
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>

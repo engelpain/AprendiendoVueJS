@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-if y v-else</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <main id="app">
+    <template v-if="!mensaje">
+      <!-- Este texto se mostrará si no existe un mensaje en el modelo -->
+      <h3>Escriba un mensaje</h3>
+      <p>Cualquier cosa será válida</p>
+    </template>
+    <template v-else>
+      <!-- Este texto se mostrará si existe un mensaje en el modelo -->
+      <h3>Ahora hay un mensaje</h3>
+      <p>Qué interesante</p>
+    </template>
+
+    <textarea cols="30" rows="10" v-model="mensaje"></textarea>
+
+    <pre>
+      {{ $data }}
+    </pre>
+  </main>
+
+  <script>
+    var mostrarTextoCondicional = new Vue({
+      el: '#app',
+      data: {
+        mensaje: ''
+      }
+    })
+  </script>
+
+</body>
+</html>

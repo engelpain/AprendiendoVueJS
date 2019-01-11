@@ -8,15 +8,15 @@
 <body>
 
   <div id="main">
-    <input type="text" v-model="info">
-    <p v-bind:title="info">Lo que manda el input: {{ info }}</p>
+    <input type="text" v-bind:style="color" v-bind:value="valorDelInput" >
   </div>
 
   <script>
-    new Vue({
+    var binding = new Vue({
       el: '#main',
       data: {
-        info: ''
+        valorDelInput: 'Texto de ejemplo',
+        color: 'color: #00f',
       }
     })
   </script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Condicional</title>
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+
+  <div id="condicional">
+    <span v-if="verTexto">Ahora me puede ver</span>
+  </div>
+
+  <script>
+    var condicionalIf = new Vue({
+      el: '#condicional',
+      data: {
+        // Si se cambia a false, desaparecerá el elementos del DOM
+        verTexto: true
+      }
+    })
+  </script>
+
+</body>
+</html>
