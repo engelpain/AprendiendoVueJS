@@ -8,7 +8,19 @@
 <body>
 
   <div id="main">
+
+    <!-- Data binding como JS -->
+    {{ 1 + 2 }}
+
+    <!-- Data binding para modificar valores de atributos -->
     <input type="text" v-bind:style="color" v-bind:value="valorDelInput" >
+    
+    <!-- full syntax -->
+    <p v-bind:style="color"> Sintaxis larga </p>
+
+    <!-- shorthand -->
+    <p :style="color"> Sintaxis corta </p>
+
   </div>
 
   <script>

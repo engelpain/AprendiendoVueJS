@@ -69,7 +69,41 @@ Demo: [Escribir texto en el DOM](./html/holamundo.html)
 
 ### Enlazar datos - Data Binding
 > Directiva v-bin:propiedad - Permite agregar, modificar y eliminar propiedades a elementos en el DOM.
+> Otra forma de agregar binding al DOM es usandola expresión {{ elemento }}, donde dato es el dato que se quiere imprimir.
 
+Imprimir un dato con data binding es tan sencillo como:
+```html
+<div id="main">
+  {{ dato }}
+</div>
+```
+
+Permite usar todo el poder de JavaScript en expresiones, por ejemplo, para hacer una suma, solo se usaría la expresión del data binding, y ella se encargará de devolver el resultado:
+```html
+<div id="main">
+  {{ 1 + 2 }}
+</div>
+```
+
+Se pueden modificar valores de atributos de un elemento:
+```html
+<div id="main">
+  <input type="text" v-bind:style="color" v-bind:value="valorDelInput" >
+</div>
+```
+
+También se puede escribir la sintaxis de forma corta:
+```html
+<div id="main">
+  <!-- full syntax -->
+  <p v-bind:style="color"> Sintaxis larga </p>
+
+  <!-- shorthand -->
+  <p :style="color"> Sintaxis corta </p>
+</div>
+```
+
+#### Usando lo aprendido
 1. Crear el componente Vue, dentro de *data* crear las variables que contendrán las propiedades que se le asignarán al elemento:
 ```javascript
 var binding = new Vue({
