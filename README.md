@@ -336,8 +336,7 @@ Demo: [Directiva v-show](./html/vshow.html)
 > Directiva v-if y v-else - Se usa para manipular elementos del DOM dependiendo del valor de la variable que se condiciona.
 
 La directiva **v-if** tiene una contraparte denominada **v-else**, que se mostrará en caso de que no se cumpla la condición de **v-if**:
-
-```
+```html
 <!-- Si no existe un mensaje, se muestra este texto -->
 <p v-if="!mensaje"> No hay mensaje</p>
 
@@ -348,8 +347,8 @@ La directiva **v-if** tiene una contraparte denominada **v-else**, que se mostra
 > **v-else** está enlazado al **v-if** contiguo a este, por lo que si se quiere mostrar más de un mensaje no se deben declarar muchas veces el if sino usar la etiqueta <template> y dentro guardar 
 lo que se enviará.
 
-#### Usar las directivas:
 
+#### Usar las directivas:
 ##### JS
 ```javascript
 var mostrarTextoCondicional = new Vue({
@@ -361,7 +360,6 @@ var mostrarTextoCondicional = new Vue({
 ```
 
 ##### html
-
 ```html
 <main id="app">
   <!-- En lugar de abrir muchos v-if, se utiliza la etiqueta template -->
