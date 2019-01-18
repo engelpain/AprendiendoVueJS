@@ -333,6 +333,9 @@ Demo: [Directiva v-show](./html/vshow.html)
 
 
 ### Condicionales - 2da Parte
+
+> <template> es una etiqueta especial de HTML usada para demarcar texto que será manipulado con scripts
+
 > Directiva v-if y v-else - Se usa para manipular elementos del DOM dependiendo del valor de la variable que se condiciona.
 
 La directiva **v-if** tiene una contraparte denominada **v-else**, que se mostrará en caso de que no se cumpla la condición de **v-if**:
